@@ -3,81 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LINHCHU GLOBAL - TRẠM ĐIỀU HÀNH TỐI CAO</title>
+    <title>LINHCHU GLOBAL - TRẠM ĐIỀU HÀNH TỔNG LỰC</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #0d1117;
-            --glass-bg: rgba(22, 27, 34, 0.7);
+            --glass-bg: rgba(22, 27, 34, 0.8);
             --glass-border: rgba(255, 255, 255, 0.1);
             --accent-green: #2ea043;
             --accent-blue: #58a6ff;
             --accent-gold: #e3b341;
             --text-main: #c9d1d9;
-            --text-muted: #8b949e;
         }
-        body { background-color: var(--bg-color); background-image: radial-gradient(circle at 50% 0%, #1f2937 0%, transparent 50%); color: var(--text-main); font-family: 'Inter', sans-serif; margin: 0; padding: 20px; }
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--glass-border); }
-        .header h1 { margin: 0; font-size: 24px; font-weight: 800; letter-spacing: 1px; color: #fff; }
-        .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-        .card { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 20px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); }
-        h3 { margin-top: 0; font-size: 13px; text-transform: uppercase; color: var(--accent-blue); letter-spacing: 1px; }
-        .value { font-size: 32px; font-weight: 800; color: #fff; margin: 5px 0; }
-        .badge { display: inline-block; padding: 3px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; margin-top: 5px; }
-        .bg-green { background: rgba(46, 160, 67, 0.2); color: var(--accent-green); }
-        .update-item { font-size: 12px; border-left: 2px solid var(--accent-gold); padding-left: 10px; margin-bottom: 10px; }
-        .update-time { font-weight: bold; color: var(--accent-gold); }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Inter', sans-serif; margin: 0; padding: 20px; }
+        .bento-grid { display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 15px; }
+        .card { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 20px; }
+        h3 { margin-top: 0; font-size: 14px; text-transform: uppercase; color: var(--accent-blue); }
+        .value { font-size: 28px; font-weight: 800; color: #fff; }
+        .bot-list { font-size: 12px; line-height: 1.6; }
+        .status-on { color: var(--accent-green); font-weight: bold; }
+        .swarm-map { height: 200px; border: 1px dashed var(--accent-blue); position: relative; overflow: hidden; margin-top: 10px; border-radius: 15px; }
+        .dot { position: absolute; width: 3px; height: 3px; background: #fff; border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 0.2; } 50% { opacity: 1; } 100% { opacity: 0.2; } }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>LINHCHU GLOBAL AI-OS</h1>
-        <span class="badge bg-green">● HỆ THỐNG TRỰC CHIẾN</span>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h1 style="margin:0; font-size: 22px;">🏛️ ĐẠI BẢN DOANH LINHCHU GLOBAL</h1>
+        <div style="font-size: 12px; background: rgba(46, 160, 67, 0.2); color: var(--accent-green); padding: 5px 15px; border-radius: 20px; border: 1px solid var(--accent-green);">● HỆ THỐNG TRỰC CHIẾN 24/7</div>
     </div>
 
     <div class="bento-grid">
-        <!-- Ngân khố -->
+        <!-- Cột 1: Quân số & Thiên thời -->
         <div class="card">
-            <h3>💰 NGÂN KHỐ CHỦ QUYỀN</h3>
+            <h3>👥 HẠM ĐỘI 500 PHÂN THÂN</h3>
+            <div class="value">500 <span style="font-size: 14px; color: #888;">Workers</span></div>
+            <p style="font-size: 12px; color: var(--accent-green);">🟢 100% Đang cày tiền luân phiên.</p>
+            <div class="swarm-map" id="map"></div>
+            <hr style="opacity: 0.1; margin: 15px 0;">
+            <h3>🔮 THIÊN THỜI</h3>
+            <p style="font-size: 14px; margin: 5px 0;">CHU KỲ: <b style="color: #e74c3c;">🔴 KIM (TẤN CÔNG)</b></p>
+        </div>
+
+        <!-- Cột 2: Chi tiết từng Bot/Robot -->
+        <div class="card">
+            <h3>🤖 CHI TIẾT NHÂN SỰ ROBOT</h3>
+            <div class="bot-list">
+                • 🕵️ <b>SII (Tình báo):</b> <span class="status-on">ACTIVE</span><br>
+                <i>- Tác dụng: Quét tin rò rỉ VNI & Whale SOL để tìm điểm nổ.</i><br>
+                • 💰 <b>TREASURY (Tài chính):</b> <span class="status-on">ACTIVE</span><br>
+                <i>- Tác dụng: Giám sát ví, cày Volume & tự động nạp lãi kép.</i><br>
+                • 🛠️ <b>ENGINEERING (Lao động):</b> <span class="status-on">ACTIVE</span><br>
+                <i>- Tác dụng: Đúc mã nguồn Siêu phẩm & nộp bài lên GitHub.</i><br>
+                • 💸 <b>BOUNTY (Lính đánh thuê):</b> <span class="status-on">ACTIVE</span><br>
+                <i>- Tác dụng: Đột kích các task Freelance Web3 lấy tiền tươi.</i><br>
+                • 🧠 <b>EVOLUTION (Tự học):</b> <span class="status-on">ACTIVE</span><br>
+                <i>- Tác dụng: Tự vá lỗi hệ thống & nạp kỹ năng tỷ phú 3h/lần.</i><br>
+                • ⚖️ <b>OIG (Thanh tra):</b> <span class="status-on">ACTIVE</span><br>
+                <i>- Tác dụng: Đối soát sự thật Blockchain & Báo cáo Sếp 15'.</i>
+            </div>
+        </div>
+
+        <!-- Cột 3: Ngân khố & Nhật ký -->
+        <div class="card">
+            <h3>💰 NGÂN KHỐ THỰC TẾ</h3>
             <div class="value">0.0021<span style="font-size: 18px; color: #888;"> ETH</span></div>
-            <p style="font-size: 13px; color: var(--accent-green);">📈 Đang tự động nạp lãi (Yield)</p>
-            <hr style="opacity: 0.1;">
-            <p style="font-size: 12px;">LỢI NHUẬN CHỜ: <b style="color: var(--accent-gold);">$25.00+</b></p>
-        </div>
-
-        <!-- 06 Bộ -->
-        <div class="card">
-            <h3>🏢 06 BỘ BAN NGÀNH</h3>
-            <div style="font-size: 13px; line-height: 1.8;">
-                • 🕵️ <b>Tình báo:</b> Quét VNI & Whale SOL.<br>
-                • 💰 <b>Tài chính:</b> Multi-RPC & Lãi kép.<br>
-                • 🛠️ <b>Lao động:</b> Đúc dự án GitHub.<br>
-                • 💸 <b>Bounty:</b> Săn tiền tươi Web3.<br>
-                • 🧠 <b>Tự học:</b> Nâng cấp tư duy 9/10.<br>
-                • ⚖️ <b>Thanh tra:</b> Báo cáo Sự thật 15'.
+            <p style="font-size: 12px; color: var(--accent-gold);">Lợi nhuận chờ: <b>$25.00+</b></p>
+            <hr style="opacity: 0.1; margin: 15px 0;">
+            <h3>🛰️ NHẬT KÝ CHIẾN TRƯỜNG</h3>
+            <div style="font-size: 11px; color: #888;">
+                [17:05] Đã nạp 500 phân thân.<br>
+                [17:08] SII báo động: VGI đang nén.<br>
+                [17:10] Đã sao lưu bản v1000.183.<br>
+                [17:12] Đã đồng bộ 10 dự án GitHub.
             </div>
-        </div>
-
-        <!-- Bản tin nâng cấp -->
-        <div class="card">
-            <h3>🆙 NHẬT KÝ NÂNG CẤP (v1000.183)</h3>
-            <div class="update-item">
-                <span class="update-time">[16:55]</span> Việt hóa toàn bộ giao diện & Tối ưu hóa hiển thị Mobile.
-            </div>
-            <div class="update-item">
-                <span class="update-time">[16:45]</span> Kích hoạt Hạm đội 500 Phân thân cày tiền tươi toàn cầu.
-            </div>
-            <div class="update-item">
-                <span class="update-time">[16:30]</span> Nạp DNA Tỷ phú & Giao thức GaaS (Agentic-as-a-Service).
-            </div>
-        </div>
-
-        <!-- Thiên thời -->
-        <div class="card">
-            <h3>🔮 THIÊN THỜI (ASTRO)</h3>
-            <p style="font-size: 14px;">TRẠNG THÁI: <b style="color: #e74c3c;">🔴 KIM (TẤN CÔNG)</b></p>
-            <p style="font-size: 12px; color: #888;">Quân Sư: "Binh quý thần tốc - Đây là lúc bành trướng mạnh mẽ nhất."</p>
         </div>
     </div>
+
+    <script>
+        const map = document.getElementById('map');
+        for(let i=0; i<50; i++) {
+            const d = document.createElement('div');
+            d.className = 'dot';
+            d.style.left = Math.random() * 100 + '%';
+            d.style.top = Math.random() * 100 + '%';
+            d.style.animationDelay = Math.random() * 2 + 's';
+            map.appendChild(d);
+        }
+    </script>
 </body>
 </html>
