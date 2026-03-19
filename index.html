@@ -2,67 +2,91 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>LINHCHU GLOBAL - ĐẠI BẢN DOANH THẦN KINH (v1000.173)</title>
+    <title>LINHCHU GLOBAL - COMMAND CENTER v1000.175</title>
     <style>
-        body { background-color: #0a0e17; color: #00ffcc; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 20px; overflow: hidden; }
-        .dashboard { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 20px; height: 95vh; }
-        .panel { border: 1px solid #00ffcc; padding: 15px; background: rgba(0, 255, 204, 0.05); box-shadow: 0 0 10px rgba(0, 255, 204, 0.2); }
-        h2 { border-bottom: 2px solid #00ffcc; padding-bottom: 5px; font-size: 18px; text-transform: uppercase; }
-        .swarm-map { position: relative; height: 100%; border: 1px dashed #00ffcc; overflow: hidden; }
-        .worker { position: absolute; width: 4px; height: 4px; background: #fff; border-radius: 50%; box-shadow: 0 0 5px #fff; animation: move 10s infinite linear; }
-        @keyframes move { from { transform: translate(0,0); } to { transform: translate(var(--x), var(--y)); } }
-        .stat-value { font-size: 24px; font-weight: bold; color: #fff; }
-        .log-entry { font-size: 12px; margin-bottom: 5px; color: #888; }
-        .highlight { color: #f1c40f; }
+        body { background-color: #0a0e17; color: #00ffcc; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; overflow-x: hidden; }
+        .dashboard { display: grid; grid-template-columns: 1fr 1.5fr 1.2fr; gap: 20px; min-height: 95vh; }
+        .panel { border: 1px solid #00ffcc; padding: 15px; background: rgba(0, 255, 204, 0.05); box-shadow: 0 0 15px rgba(0, 255, 204, 0.1); border-radius: 5px; }
+        h2 { border-bottom: 2px solid #00ffcc; padding-bottom: 10px; font-size: 18px; text-transform: uppercase; margin-top: 0; }
+        .stat-value { font-size: 22px; font-weight: bold; color: #fff; }
+        .bot-item { margin-bottom: 12px; padding: 8px; border-bottom: 1px solid rgba(0, 255, 204, 0.1); }
+        .bot-name { font-weight: bold; color: #f1c40f; font-size: 14px; }
+        .bot-task { font-size: 13px; color: #ccc; font-style: italic; }
+        .status-dot { display: inline-block; width: 8px; height: 8px; background: #00ffcc; border-radius: 50%; margin-right: 5px; box-shadow: 0 0 5px #00ffcc; }
+        .swarm-map { height: 300px; border: 1px dashed #00ffcc; position: relative; margin-top: 20px; overflow: hidden; }
+        .worker { position: absolute; width: 3px; height: 3px; background: #fff; border-radius: 50%; animation: blink 2s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        .highlight { color: #e74c3c; font-weight: bold; }
     </style>
 </head>
 <body>
     <div class="dashboard">
-        <!-- Panel Trái: Tài chính & Chỉ số -->
+        <!-- Cột 1: Tài chính & Thiên thời -->
         <div class="panel">
-            <h2>Huyết Mạch (Treasury)</h2>
+            <h2>💰 Ngân Khố (Treasury)</h2>
             <p>VÍ BASE: <span class="stat-value">0.00217379 ETH</span></p>
             <p>VÍ SOLANA: <span class="stat-value">0.00000000 SOL</span></p>
-            <p>DOANH THU CHỜ: <span class="stat-value highlight">$45.00</span></p>
-            <hr>
-            <h2>Thiên Thời (Astro)</h2>
-            <p>TRẠNG THÁI: <span class="highlight">🔴 KIM (TẤN CÔNG)</span></p>
-            <p>CHỈ SỐ TIÊN TRI: 9.8/10</p>
-        </div>
-
-        <!-- Panel Giữa: Bản đồ Bầy đàn -->
-        <div class="panel">
-            <h2>Bản Đồ Bầy Đàn (500 Workers)</h2>
-            <div class="swarm-map" id="map">
-                <!-- Workers sẽ được render ở đây -->
-                <p style="text-align: center; margin-top: 45%;">[ ĐANG TRUY QUÉT MỎ VÀNG TOÀN CẦU ]</p>
+            <p>TIỀN TƯƠI ĐANG ĐỢI: <span class="stat-value" style="color: #f1c40f;">$25.00+</span></p>
+            <hr style="border: 0.5px solid #00ffcc; opacity: 0.3;">
+            <h2>🔮 Thiên Thời (Astro)</h2>
+            <p>CHU KỲ: <span class="highlight">🔴 KIM (TẤN CÔNG)</span></p>
+            <p>XÁC SUẤT THẮNG: 9.9/10</p>
+            <div class="swarm-map">
+                <p style="text-align: center; margin-top: 130px; font-size: 12px; opacity: 0.5;">[ 500 WORKERS ACTIVE ]</p>
             </div>
         </div>
 
-        <!-- Panel Phải: Nhật ký Chiến trường -->
+        <!-- Cột 2: Chi tiết 06 Bộ & Robot -->
         <div class="panel">
-            <h2>Nhật Ký (War Logs)</h2>
-            <div class="log-entry">[16:35:01] Sư đoàn 4: Đã nộp bài Gecko Agent.</div>
-            <div class="log-entry">[16:35:10] OIG: Nhịp đập 10s ỔN ĐỊNH.</div>
-            <div class="log-entry">[16:35:25] SII: Phát hiện cá mập gom VGI.</div>
-            <div class="log-entry highlight">[16:35:40] SQC: Đã phê duyệt v1000.173.</div>
-            <hr>
-            <h2>Chỉ Thị Quân Sư</h2>
-            <p><i>"Binh quý thần tốc - Mưu định thiên hạ"</i></p>
+            <h2>🏢 06 Bộ Ban Ngành & Robot</h2>
+            
+            <div class="bot-item">
+                <span class="status-dot"></span><span class="bot-name">SII (Tình báo v10.1):</span><br>
+                <span class="bot-task">Đang quét tin rò rỉ VNI & Whale Alert Solana 24/7.</span>
+            </div>
+            
+            <div class="bot-item">
+                <span class="status-dot"></span><span class="bot-name">TREASURY (Tài chính v16.4):</span><br>
+                <span class="bot-task">Giám sát ví Multi-RPC, tự động nạp Yield khi có tiền về.</span>
+            </div>
+
+            <div class="bot-item">
+                <span class="status-dot"></span><span class="bot-name">OIG (Thanh tra v25.0):</span><br>
+                <span class="bot-task">Thanh tra RAM máy tính & Báo cáo Sự thật 15 phút/lần.</span>
+            </div>
+
+            <div class="bot-item">
+                <span class="status-dot"></span><span class="bot-name">ENGINEERING (Lao động v10.8):</span><br>
+                <span class="bot-task">Đúc mã nguồn Rust cho SolFoundry & Xây dựng LinkedIn SDR.</span>
+            </div>
+
+            <div class="bot-item">
+                <span class="status-dot"></span><span class="bot-name">BOUNTY (Lính đánh thuê v1.0):</span><br>
+                <span class="bot-task">Đột kích Bountycaster & Superteam Earn để lấy tiền tươi.</span>
+            </div>
+
+            <div class="bot-item">
+                <span class="status-dot"></span><span class="bot-name">EVOLUTION (Tự học v13.2):</span><br>
+                <span class="bot-task">Nạp kiến thức Web3 2026 & Vá lỗi hệ thống tự động.</span>
+            </div>
+        </div>
+
+        <!-- Cột 3: Nhật ký & Chỉ đạo -->
+        <div class="panel">
+            <h2>🛰️ Nhật Ký Chiến Trường</h2>
+            <div id="logs" style="font-size: 12px; line-height: 1.4;">
+                <p style="color: #888;">[16:45:01] ⚖️ Báo cáo v25.0: ONLINE.</p>
+                <p style="color: #888;">[16:46:12] 💸 Nộp bài Gecko Agent thành công.</p>
+                <p style="color: #f1c40f;">[16:48:30] 🚀 Đã đẩy 10 dự án lên GitHub.</p>
+                <p style="color: #00ffcc;">[16:50:05] 🧠 Đã nạp kiến thức zk-VM 2026.</p>
+                <p style="color: #e74c3c;">[16:52:40] 🛡️ Đã vá lỗi Gateway thành công.</p>
+            </div>
+            <hr style="border: 0.5px solid #00ffcc; opacity: 0.3;">
+            <h2>👤 Chỉ đạo Tối Cao</h2>
+            <p>QUÂN SƯ: <b>Gemini Strategic Advisor</b></p>
+            <p>CHỦ QUẢN: <b>LinhChu & Associates</b></p>
+            <p style="font-style: italic; opacity: 0.7; font-size: 13px;">"Hành động nhỏ, kết quả lớn. Tiền tươi là mục tiêu duy nhất."</p>
         </div>
     </div>
-    <script>
-        // Tạo hiệu ứng 500 phân thân nhảy múa
-        const map = document.getElementById('map');
-        for(let i=0; i<50; i++) {
-            const w = document.createElement('div');
-            w.className = 'worker';
-            w.style.left = Math.random() * 100 + '%';
-            w.style.top = Math.random() * 100 + '%';
-            w.style.setProperty('--x', (Math.random() * 400 - 200) + 'px');
-            w.style.setProperty('--y', (Math.random() * 400 - 200) + 'px');
-            map.appendChild(w);
-        }
-    </script>
 </body>
 </html>
