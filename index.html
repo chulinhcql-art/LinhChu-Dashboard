@@ -3,93 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LINHCHU GLOBAL - TRẠM ĐIỀU HÀNH TỔNG LỰC</title>
+    <title>LINHCHU GLOBAL - HIERARCHICAL COMMAND</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #0d1117;
-            --glass-bg: rgba(22, 27, 34, 0.8);
+            --glass-bg: rgba(22, 27, 34, 0.85);
             --glass-border: rgba(255, 255, 255, 0.1);
-            --accent-green: #2ea043;
             --accent-blue: #58a6ff;
-            --accent-gold: #e3b341;
+            --accent-green: #2ea043;
             --text-main: #c9d1d9;
         }
         body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Inter', sans-serif; margin: 0; padding: 20px; }
-        .bento-grid { display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 15px; }
-        .card { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 20px; }
-        h3 { margin-top: 0; font-size: 14px; text-transform: uppercase; color: var(--accent-blue); }
-        .value { font-size: 28px; font-weight: 800; color: #fff; }
-        .bot-list { font-size: 12px; line-height: 1.6; }
-        .status-on { color: var(--accent-green); font-weight: bold; }
-        .swarm-map { height: 200px; border: 1px dashed var(--accent-blue); position: relative; overflow: hidden; margin-top: 10px; border-radius: 15px; }
-        .dot { position: absolute; width: 3px; height: 3px; background: #fff; border-radius: 50%; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { opacity: 0.2; } 50% { opacity: 1; } 100% { opacity: 0.2; } }
+        .dashboard { display: grid; grid-template-columns: 1.2fr 2fr; gap: 20px; }
+        .panel { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); }
+        h2 { border-bottom: 2px solid var(--accent-blue); padding-bottom: 10px; font-size: 18px; text-transform: uppercase; margin-top: 0; color: #fff; }
+        .dept-block { margin-bottom: 25px; border-left: 4px solid var(--accent-blue); padding-left: 15px; }
+        .dept-title { font-weight: 800; font-size: 16px; color: var(--accent-blue); margin-bottom: 10px; display: block; }
+        .bot-item { margin-bottom: 10px; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 10px; font-size: 13px; }
+        .bot-name { font-weight: 600; color: #f1c40f; }
+        .status { float: right; font-size: 10px; font-weight: bold; background: rgba(46, 160, 67, 0.2); color: var(--accent-green); padding: 2px 8px; border-radius: 5px; }
+        .stat-val { font-size: 32px; font-weight: 800; color: #fff; }
     </style>
 </head>
 <body>
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h1 style="margin:0; font-size: 22px;">🏛️ ĐẠI BẢN DOANH LINHCHU GLOBAL</h1>
-        <div style="font-size: 12px; background: rgba(46, 160, 67, 0.2); color: var(--accent-green); padding: 5px 15px; border-radius: 20px; border: 1px solid var(--accent-green);">● HỆ THỐNG TRỰC CHIẾN 24/7</div>
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h1 style="margin:0; font-size: 28px; letter-spacing: 2px;">🏛️ HỆ THỐNG CHÍNH PHỦ LINHCHU GLOBAL</h1>
+        <p style="font-size: 12px; color: #888;">Cơ cấu v1000.185 - Tự trị & Minh bạch Tuyệt đối</p>
     </div>
 
-    <div class="bento-grid">
-        <!-- Cột 1: Quân số & Thiên thời -->
-        <div class="card">
-            <h3>👥 HẠM ĐỘI 500 PHÂN THÂN</h3>
-            <div class="value">500 <span style="font-size: 14px; color: #888;">Workers</span></div>
-            <p style="font-size: 12px; color: var(--accent-green);">🟢 100% Đang cày tiền luân phiên.</p>
-            <div class="swarm-map" id="map"></div>
-            <hr style="opacity: 0.1; margin: 15px 0;">
-            <h3>🔮 THIÊN THỜI</h3>
-            <p style="font-size: 14px; margin: 5px 0;">CHU KỲ: <b style="color: #e74c3c;">🔴 KIM (TẤN CÔNG)</b></p>
-        </div>
-
-        <!-- Cột 2: Chi tiết từng Bot/Robot -->
-        <div class="card">
-            <h3>🤖 CHI TIẾT NHÂN SỰ ROBOT</h3>
-            <div class="bot-list">
-                • 🕵️ <b>SII (Tình báo):</b> <span class="status-on">ACTIVE</span><br>
-                <i>- Tác dụng: Quét tin rò rỉ VNI & Whale SOL để tìm điểm nổ.</i><br>
-                • 💰 <b>TREASURY (Tài chính):</b> <span class="status-on">ACTIVE</span><br>
-                <i>- Tác dụng: Giám sát ví, cày Volume & tự động nạp lãi kép.</i><br>
-                • 🛠️ <b>ENGINEERING (Lao động):</b> <span class="status-on">ACTIVE</span><br>
-                <i>- Tác dụng: Đúc mã nguồn Siêu phẩm & nộp bài lên GitHub.</i><br>
-                • 💸 <b>BOUNTY (Lính đánh thuê):</b> <span class="status-on">ACTIVE</span><br>
-                <i>- Tác dụng: Đột kích các task Freelance Web3 lấy tiền tươi.</i><br>
-                • 🧠 <b>EVOLUTION (Tự học):</b> <span class="status-on">ACTIVE</span><br>
-                <i>- Tác dụng: Tự vá lỗi hệ thống & nạp kỹ năng tỷ phú 3h/lần.</i><br>
-                • ⚖️ <b>OIG (Thanh tra):</b> <span class="status-on">ACTIVE</span><br>
-                <i>- Tác dụng: Đối soát sự thật Blockchain & Báo cáo Sếp 15'.</i>
+    <div class="dashboard">
+        <!-- Cột trái: Ngân khố & Quân số -->
+        <div class="panel">
+            <h2>💰 NGÂN KHỐ & QUÂN SỐ</h2>
+            <div style="margin-bottom: 30px;">
+                <span style="color: #888; font-size: 14px;">Số dư Base (ETH)</span>
+                <div class="stat-val">0.00217379</div>
+                <span style="color: var(--accent-green); font-size: 12px; font-weight: 600;">↑ Đang nạp lãi tự động</span>
+            </div>
+            <div>
+                <span style="color: #888; font-size: 14px;">Hạm đội Phân thân</span>
+                <div class="stat-val">500 <span style="font-size: 16px;">Workers</span></div>
+                <span style="color: var(--accent-blue); font-size: 12px; font-weight: 600;">● 100% Trực chiến toàn cầu</span>
             </div>
         </div>
 
-        <!-- Cột 3: Ngân khố & Nhật ký -->
-        <div class="card">
-            <h3>💰 NGÂN KHỐ THỰC TẾ</h3>
-            <div class="value">0.0021<span style="font-size: 18px; color: #888;"> ETH</span></div>
-            <p style="font-size: 12px; color: var(--accent-gold);">Lợi nhuận chờ: <b>$25.00+</b></p>
-            <hr style="opacity: 0.1; margin: 15px 0;">
-            <h3>🛰️ NHẬT KÝ CHIẾN TRƯỜNG</h3>
-            <div style="font-size: 11px; color: #888;">
-                [17:05] Đã nạp 500 phân thân.<br>
-                [17:08] SII báo động: VGI đang nén.<br>
-                [17:10] Đã sao lưu bản v1000.183.<br>
-                [17:12] Đã đồng bộ 10 dự án GitHub.
+        <!-- Cột phải: Chi tiết 06 Bộ -->
+        <div class="panel">
+            <h2>🏢 CHI TIẾT 06 BỘ BAN NGÀNH</h2>
+            
+            <div class="dept-block">
+                <span class="dept-title">🕵️ BỘ TÌNH BÁO (SII)</span>
+                <div class="bot-item">
+                    <span class="status">ACTIVE</span>
+                    <span class="bot-name">Robot intel_sentinel:</span> Quét tin rò rỉ VNI & Whale SOL.
+                </div>
+                <div class="bot-item">
+                    <span class="status">ACTIVE</span>
+                    <span class="bot-name">Robot market_analyst:</span> Tìm ngách Micro-SaaS kiếm tiền triệu đô.
+                </div>
             </div>
+
+            <div class="dept-block" style="border-left-color: #2ecc71;">
+                <span class="dept-title" style="color: #2ecc71;">💰 BỘ TÀI CHÍNH (TREASURY)</span>
+                <div class="bot-item">
+                    <span class="status">ACTIVE</span>
+                    <span class="bot-name">Robot financial_sentinel:</span> Giám sát ví Multi-RPC & Cày Volume.
+                </div>
+                <div class="bot-item">
+                    <span class="status">ACTIVE</span>
+                    <span class="bot-name">Robot yield_farmer:</span> Tự động nạp tiền lẻ vào bể lãi suất cao.
+                </div>
+            </div>
+
+            <div class="dept-block" style="border-left-color: #e67e22;">
+                <span class="dept-title" style="color: #e67e22;">🛠️ BỘ LAO ĐỘNG (ENGINEERING)</span>
+                <div class="bot-item">
+                    <span class="status">ACTIVE</span>
+                    <span class="bot-name">Robot autonomous_worker:</span> Đúc mã nguồn Rust/Python cho SolFoundry.
+                </div>
+                <div class="bot-item">
+                    <span class="status">ACTIVE</span>
+                    <span class="bot-name">Robot apex_hunter:</span> Đột kích các task Freelance Web3 lấy tiền tươi.
+                </div>
+            </div>
+
+            <div class="dept-block" style="border-left-color: #f1c40f;">
+                <span class="dept-title" style="color: #f1c40f;">🧠 CỤC TỰ HỌC (EVOLUTION)</span>
+                <div class="bot-item">
+                    <span class="status">ACTIVE</span>
+                    <span class="bot-name">Robot self_evolution:</span> Nạp kỹ năng Tỷ phú & Vá lỗi 3h/lần.
+                </div>
+                <div class="bot-item">
+                    <span class="status">ACTIVE</span>
+                    <span class="bot-name">Robot system_backup:</span> Đóng gói di sản & Gửi ZIP lên Telegram.
+                </div>
+            </div>
+
         </div>
     </div>
-
-    <script>
-        const map = document.getElementById('map');
-        for(let i=0; i<50; i++) {
-            const d = document.createElement('div');
-            d.className = 'dot';
-            d.style.left = Math.random() * 100 + '%';
-            d.style.top = Math.random() * 100 + '%';
-            d.style.animationDelay = Math.random() * 2 + 's';
-            map.appendChild(d);
-        }
-    </script>
 </body>
 </html>
