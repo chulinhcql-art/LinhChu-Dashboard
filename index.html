@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>LINHCHU GLOBAL - ĐẠI BẢN DOANH THẦN KINH (v1000.173)</title>
+    <style>
+        body { background-color: #0a0e17; color: #00ffcc; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 20px; overflow: hidden; }
+        .dashboard { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 20px; height: 95vh; }
+        .panel { border: 1px solid #00ffcc; padding: 15px; background: rgba(0, 255, 204, 0.05); box-shadow: 0 0 10px rgba(0, 255, 204, 0.2); }
+        h2 { border-bottom: 2px solid #00ffcc; padding-bottom: 5px; font-size: 18px; text-transform: uppercase; }
+        .swarm-map { position: relative; height: 100%; border: 1px dashed #00ffcc; overflow: hidden; }
+        .worker { position: absolute; width: 4px; height: 4px; background: #fff; border-radius: 50%; box-shadow: 0 0 5px #fff; animation: move 10s infinite linear; }
+        @keyframes move { from { transform: translate(0,0); } to { transform: translate(var(--x), var(--y)); } }
+        .stat-value { font-size: 24px; font-weight: bold; color: #fff; }
+        .log-entry { font-size: 12px; margin-bottom: 5px; color: #888; }
+        .highlight { color: #f1c40f; }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Panel Trái: Tài chính & Chỉ số -->
+        <div class="panel">
+            <h2>Huyết Mạch (Treasury)</h2>
+            <p>VÍ BASE: <span class="stat-value">0.00217379 ETH</span></p>
+            <p>VÍ SOLANA: <span class="stat-value">0.00000000 SOL</span></p>
+            <p>DOANH THU CHỜ: <span class="stat-value highlight">$45.00</span></p>
+            <hr>
+            <h2>Thiên Thời (Astro)</h2>
+            <p>TRẠNG THÁI: <span class="highlight">🔴 KIM (TẤN CÔNG)</span></p>
+            <p>CHỈ SỐ TIÊN TRI: 9.8/10</p>
+        </div>
+
+        <!-- Panel Giữa: Bản đồ Bầy đàn -->
+        <div class="panel">
+            <h2>Bản Đồ Bầy Đàn (500 Workers)</h2>
+            <div class="swarm-map" id="map">
+                <!-- Workers sẽ được render ở đây -->
+                <p style="text-align: center; margin-top: 45%;">[ ĐANG TRUY QUÉT MỎ VÀNG TOÀN CẦU ]</p>
+            </div>
+        </div>
+
+        <!-- Panel Phải: Nhật ký Chiến trường -->
+        <div class="panel">
+            <h2>Nhật Ký (War Logs)</h2>
+            <div class="log-entry">[16:35:01] Sư đoàn 4: Đã nộp bài Gecko Agent.</div>
+            <div class="log-entry">[16:35:10] OIG: Nhịp đập 10s ỔN ĐỊNH.</div>
+            <div class="log-entry">[16:35:25] SII: Phát hiện cá mập gom VGI.</div>
+            <div class="log-entry highlight">[16:35:40] SQC: Đã phê duyệt v1000.173.</div>
+            <hr>
+            <h2>Chỉ Thị Quân Sư</h2>
+            <p><i>"Binh quý thần tốc - Mưu định thiên hạ"</i></p>
+        </div>
+    </div>
+    <script>
+        // Tạo hiệu ứng 500 phân thân nhảy múa
+        const map = document.getElementById('map');
+        for(let i=0; i<50; i++) {
+            const w = document.createElement('div');
+            w.className = 'worker';
+            w.style.left = Math.random() * 100 + '%';
+            w.style.top = Math.random() * 100 + '%';
+            w.style.setProperty('--x', (Math.random() * 400 - 200) + 'px');
+            w.style.setProperty('--y', (Math.random() * 400 - 200) + 'px');
+            map.appendChild(w);
+        }
+    </script>
+</body>
+</html>
